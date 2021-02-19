@@ -1,24 +1,33 @@
 package ru.geekbrains.printservice;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class PrintServiceFactory {
 
-    enum PrintType{
+    public enum PrintType{
         TO_PAPER,
         TO_FILE,
     }
+
+    private PrintService printServiceToFile;
+    private PrintService printServiceToPaper;
 
     public PrintService getPrintService (PrintType printType) {
         PrintService printService;
         switch (printType) {
             case TO_FILE: {
                 System.out.println("TO_FILE");
-                printService = new PrintServiceToFile();
-                break;
+                if (printServiceToFile == null) {
+                    printServiceToFile = new PrintServiceToFile();
+                }
+                return printServiceToFile;
             }
             case TO_PAPER: {
-                System.out.println("TO_PAPER");
-                printService = new PrintServiceToPaper();
-                break;
+                if (printServiceToPaper == null) {
+                    printServiceToPaper = new PrintServiceToPaper();
+                }
+                return printServiceToPaper;
             }
 //            case TO_ZIP_FILE: {
 //                System.out.println("TO_ZIP_FILE");
@@ -29,7 +38,5 @@ public class PrintServiceFactory {
                 throw new IllegalArgumentException("unknown PrintType " + this.getClass().getSimpleName());
             }
         }
-        return printService;
     }
-
 }

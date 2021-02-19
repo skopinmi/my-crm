@@ -1,11 +1,13 @@
 package ru.geekbrains.services.repr;
 
+import lombok.Data;
 import ru.geekbrains.models.Role;
 import ru.geekbrains.models.Status;
 import ru.geekbrains.models.User;
 
 import java.util.Set;
 
+@Data
 public class UserRepr {
 
     private Long id;

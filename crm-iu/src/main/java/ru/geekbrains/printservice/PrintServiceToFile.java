@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class PrintServiceToFile implements PrintService {
 
+
     private FileWriter fileWriter;
 
     public PrintServiceToFile(){
@@ -16,16 +17,11 @@ public class PrintServiceToFile implements PrintService {
 
     @Override
     public void print(Message message) {
-        if (message.getTargetFile().isFile()) {
-            try (FileWriter fileWriter = new FileWriter(message.getTargetFile())) {
-                fileWriter.write(message.getText());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println("print to file " + message.getText() + " to " + message.getTargetFile().getName());
+        try (FileWriter fileWriter = new FileWriter(message.getTargetFile())) {
+            fileWriter.write(message.getText());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        else {
-            throw new IllegalArgumentException("File in message is not file");
-        }
+        System.out.println("print to file " + message.getText() + " to " + message.getTargetFile().getName());
     }
 }

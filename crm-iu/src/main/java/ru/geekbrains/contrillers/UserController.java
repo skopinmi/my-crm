@@ -16,6 +16,7 @@ public class UserController {
     public UserController( UserService userService) {
         this.userService = userService;
     }
+
     @RequestMapping("/")
     public String indexPage(Model model) {
         model.addAttribute("activePage", "None");

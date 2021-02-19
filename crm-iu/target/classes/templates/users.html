@@ -17,9 +17,13 @@
         <div class="card mb-4">
 
             <div class="card-body">
-<!--                <form class="form-group" th:action="@{/user/create}">-->
-<!--                    <button type="submit" class="btn btn-primary">Create new</button>-->
-<!--                </form>-->
+                <form class="form-group" th:action="@{/print}">
+                    <button type="submit" class="btn btn-primary">Print to File</button>
+                </form>
+
+                <form class="form-group" th:action="@{/printPR}">
+                    <button type="submit" class="btn btn-primary">Print</button>
+                </form>
 
                 <table id="users" class="table table-hover" cellspacing="0" width="100%">
                     <thead>
