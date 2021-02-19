@@ -4,11 +4,10 @@ import ru.geekbrains.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.geekbrains.repositories.StatusRepository;
 import ru.geekbrains.repositories.UserRepository;
 import ru.geekbrains.services.repr.UserRepr;
-
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,15 +15,19 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private StatusRepository statusRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository,
+                           StatusRepository statusRepository) {
         this.userRepository = userRepository;
+        this.statusRepository = statusRepository;
     }
 
-    @Override
-    public void save(UserRepr userRepr) {
-
+    public List<UserRepr> findByStatusId (Long id) {
+        return statusRepository.findById(id).get().getUsers()
+                                                .stream().map(UserRepr :: new)
+                                                .collect(Collectors.toList());
     }
 
     public List<UserRepr> findAll() {
@@ -34,8 +37,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserRepr> findById(Long id) {
-        return Optional.empty();
+    public void save(UserRepr userRepr) {
+
+    }
+
+    @Override
+    public UserRepr findById(Long id) {
+        return new UserRepr(userRepository.findById(id).get());
     }
 
     @Override

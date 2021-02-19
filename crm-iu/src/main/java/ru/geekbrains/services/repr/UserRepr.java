@@ -29,6 +29,7 @@ public class UserRepr {
 
     public UserRepr(User user) {
         this.id = user.getId();
+        this.name = user.getName();
         this.phone = user.getPhone();
         this.email = user.getEmail();
         this.status = user.getStatus();
