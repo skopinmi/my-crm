@@ -1,7 +1,7 @@
-package repositories;
+package ru.geekbrains.repositories;
 
 
-import models.User;
+import ru.geekbrains.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {
