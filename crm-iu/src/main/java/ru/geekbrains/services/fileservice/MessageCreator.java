@@ -1,11 +1,10 @@
-package ru.geekbrains.fileservice;
+package ru.geekbrains.services.fileservice;
 
 import lombok.Data;
-import org.hibernate.id.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.html.HTMLTableElement;
-import ru.geekbrains.services.repr.Message;
+import ru.geekbrains.services.dbservice.repr.Message;
 
 import java.io.File;
 import java.util.UUID;

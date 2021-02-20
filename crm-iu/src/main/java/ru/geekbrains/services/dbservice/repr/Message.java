@@ -1,4 +1,4 @@
-package ru.geekbrains.services.repr;
+package ru.geekbrains.services.dbservice.repr;
 
 import lombok.Data;
 
@@ -15,6 +15,5 @@ public class Message {
     private File targetFile;
 
     private String text;
-
 
 }

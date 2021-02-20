@@ -1,7 +1,7 @@
-package ru.geekbrains.services;
+package ru.geekbrains.services.dbservice;
 
-import ru.geekbrains.services.repr.OrderEntryRepr;
-import ru.geekbrains.services.repr.UserRepr;
+import ru.geekbrains.services.dbservice.repr.OrderEntryRepr;
+import ru.geekbrains.services.dbservice.repr.UserRepr;
 
 import java.util.List;
 

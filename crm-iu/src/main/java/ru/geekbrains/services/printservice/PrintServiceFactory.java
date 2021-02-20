@@ -1,4 +1,4 @@
-package ru.geekbrains.printservice;
+package ru.geekbrains.services.printservice;
 
 import org.springframework.stereotype.Service;
 

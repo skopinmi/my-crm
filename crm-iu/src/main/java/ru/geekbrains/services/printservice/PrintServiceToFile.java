@@ -1,6 +1,6 @@
-package ru.geekbrains.printservice;
+package ru.geekbrains.services.printservice;
 
-import ru.geekbrains.services.repr.Message;
+import ru.geekbrains.services.dbservice.repr.Message;
 
 
 import java.io.FileWriter;

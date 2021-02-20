@@ -1,14 +1,14 @@
-package ru.geekbrains.services;
+package ru.geekbrains.services.dbservice;
 
-import ru.geekbrains.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.geekbrains.repositories.StatusRepository;
 import ru.geekbrains.repositories.UserRepository;
-import ru.geekbrains.services.repr.UserRepr;
+
 import java.util.List;
 import java.util.stream.Collectors;
+import ru.geekbrains.services.dbservice.repr.UserRepr;
 
 @Service
 @Transactional
@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(UserRepr userRepr) {
 
+        // TODO доделать
     }
 
     @Override
@@ -48,6 +49,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void remove (Long id) {
-
+        userRepository.deleteById(id);
     }
 }

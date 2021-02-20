@@ -1,10 +1,9 @@
-package ru.geekbrains.notifiers;
+package ru.geekbrains.services.notifiers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.services.UserServiceImpl;
-import ru.geekbrains.services.repr.UserRepr;
+import ru.geekbrains.services.dbservice.UserServiceImpl;
+import ru.geekbrains.services.dbservice.repr.UserRepr;
 import java.util.List;
 
 @Service

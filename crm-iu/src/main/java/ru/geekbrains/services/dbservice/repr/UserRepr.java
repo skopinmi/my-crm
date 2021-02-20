@@ -1,4 +1,4 @@
-package ru.geekbrains.services.repr;
+package ru.geekbrains.services.dbservice.repr;
 
 import lombok.Data;
 import ru.geekbrains.models.Role;

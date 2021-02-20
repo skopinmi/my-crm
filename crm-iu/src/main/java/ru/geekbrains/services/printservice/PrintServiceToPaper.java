@@ -1,6 +1,6 @@
-package ru.geekbrains.printservice;
+package ru.geekbrains.services.printservice;
 
-import ru.geekbrains.services.repr.Message;
+import ru.geekbrains.services.dbservice.repr.Message;
 
 public class PrintServiceToPaper implements PrintService {
 

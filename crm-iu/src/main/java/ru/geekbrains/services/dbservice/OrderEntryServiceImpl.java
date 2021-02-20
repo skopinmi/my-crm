@@ -1,12 +1,10 @@
-package ru.geekbrains.services;
+package ru.geekbrains.services.dbservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.models.OrderEntry;
 import ru.geekbrains.repositories.OrderEntryRepository;
-import ru.geekbrains.services.repr.OrderEntryRepr;
+import ru.geekbrains.services.dbservice.repr.OrderEntryRepr;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

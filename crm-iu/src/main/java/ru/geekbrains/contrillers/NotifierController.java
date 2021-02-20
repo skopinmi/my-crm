@@ -2,16 +2,13 @@ package ru.geekbrains.contrillers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.notifiers.EmailNotifierImpl;
-import ru.geekbrains.notifiers.SMSNotifierImpl;
-import ru.geekbrains.repositories.StatusRepository;
-import ru.geekbrains.services.StatusService;
-import ru.geekbrains.services.UserService;
-import ru.geekbrains.services.UserServiceImpl;
+import ru.geekbrains.services.notifiers.EmailNotifierImpl;
+import ru.geekbrains.services.notifiers.SMSNotifierImpl;
+import ru.geekbrains.services.dbservice.StatusServiceImpl;
+import ru.geekbrains.services.dbservice.UserServiceImpl;
 
 @Controller
 public class NotifierController {
@@ -20,17 +17,17 @@ public class NotifierController {
     private EmailNotifierImpl emailNotifier;
     private SMSNotifierImpl SMSNotifier;
 
-    private StatusService statusService;
+    private StatusServiceImpl statusServiceImpl;
 
     @Autowired
     public NotifierController(
-                              EmailNotifierImpl emailNotifier,
-                              SMSNotifierImpl SMSNotifier,
-                              StatusService statusService,
-                              UserServiceImpl userServiceImple) {
+            EmailNotifierImpl emailNotifier,
+            SMSNotifierImpl SMSNotifier,
+            StatusServiceImpl statusServiceImpl,
+            UserServiceImpl userServiceImple) {
         this.emailNotifier = emailNotifier;
         this.SMSNotifier = SMSNotifier;
-        this.statusService = statusService;
+        this.statusServiceImpl = statusServiceImpl;
         this.userServiceImpl = userServiceImple;
     }
 

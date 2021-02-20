@@ -1,6 +1,6 @@
-package ru.geekbrains.notifiers;
+package ru.geekbrains.services.notifiers;
 
-import ru.geekbrains.services.repr.UserRepr;
+import ru.geekbrains.services.dbservice.repr.UserRepr;
 
 import java.util.List;
 

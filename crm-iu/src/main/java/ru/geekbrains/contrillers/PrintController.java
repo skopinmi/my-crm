@@ -2,10 +2,9 @@ package ru.geekbrains.contrillers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.printservice.PrintServiceFactory;
-import ru.geekbrains.fileservice.MessageCreator;
+import ru.geekbrains.services.printservice.PrintServiceFactory;
+import ru.geekbrains.services.fileservice.MessageCreator;
 
 
 @Controller
