@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class OrderService {
+public class OrderServiceImpl {
 
     private final OrderRepository orderRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 

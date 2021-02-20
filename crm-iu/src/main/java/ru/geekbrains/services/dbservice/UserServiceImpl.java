@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void remove (Long id) {
 
     }
 }

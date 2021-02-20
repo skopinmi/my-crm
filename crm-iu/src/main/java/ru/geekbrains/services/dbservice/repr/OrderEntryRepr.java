@@ -26,6 +26,7 @@ public class OrderEntryRepr {
         this.basePrice = orderEntry.getBasePrice();
         this.service = orderEntry.getService();
         this.quantity = orderEntry.getQuantity();
+        this.order = orderEntry.getOrder();
         setTotalPrice();
     }
 
