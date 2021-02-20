@@ -3,6 +3,8 @@ package ru.geekbrains.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+
 @Data
 @Entity
 @Table(name = "order_entery")
@@ -16,10 +18,10 @@ public class OrderEntry {
     private int quantity;
 
     @Column(name = "price_per_product")
-    private Double basePrice;
+    private BigDecimal basePrice;
 
     @Column(name = "price")
-    private Double totalPrice;
+    private BigDecimal totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "service_id")
@@ -32,10 +34,19 @@ public class OrderEntry {
     public OrderEntry() {
     }
 
-    public OrderEntry(Service service) {
+    public OrderEntry(Long id, int quantity, BigDecimal basePrice,
+                      BigDecimal totalPrice, Service service, Order order) {
+        this.id = id;
+        this.quantity = quantity;
+        this.basePrice = basePrice;
+        this.totalPrice = totalPrice;
         this.service = service;
-        this.quantity = 1;
+        this.order = order;
+    }
+
+    public OrderEntry(Service service, Integer quantity) {
+        this.service = service;
+        this.quantity = quantity;
         this.basePrice = service.getPrice();
-        this.totalPrice = service.getPrice();
     }
 }

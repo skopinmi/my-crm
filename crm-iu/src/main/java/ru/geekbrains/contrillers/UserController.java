@@ -25,7 +25,6 @@ public class UserController {
 
     @GetMapping("/users")
     public String adminUsersPage(Model model) {
-        model.addAttribute("activePage", "Users");
         model.addAttribute("users", userService.findAll());
         return "users";
     }

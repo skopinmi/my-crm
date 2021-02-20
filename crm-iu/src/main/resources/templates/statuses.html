@@ -25,7 +25,7 @@
                     <button type="submit" class="btn btn-primary">Notify all about the Sale</button>
                 </form>
 
-                <table id="users" class="table table-hover" cellspacing="0" width="100%">
+                <table id="statuses" class="table table-hover" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -38,9 +38,9 @@
                         <td th:text="${st.id}"></td>
                         <td th:text="${st.name}"></td>
                         <td>
-                            <a th:href="@{/status/edit}" class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">
-                                <i class="fa fa-fw fa-edit"></i>
-                            </a>
+<!--                            <a th:href="@{/status/edit}" class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">-->
+<!--                                <i class="fa fa-fw fa-edit"></i>-->
+<!--                            </a>-->
                             <form th:action="@{/status/delete}" th :method="delete" class="d-inline">
                                 <button class="btn btn-icon btn-pill btn-danger" data-toggle="tooltip" title="Delete">
                                     <i class="fa fa-fw fa-trash"></i>

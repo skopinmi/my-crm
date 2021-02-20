@@ -44,11 +44,11 @@
                         <td th:text="${usr.email}"></td>
                         <td th:text="${usr.status.getName()}"></td>
                         <td>
-                            <a
-                                    th:href="@{/user/{id}/edit(id=${usr.id})}"
-                                    class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">
-                                <i class="fa fa-fw fa-edit"></i>
-                            </a>
+<!--                            <a-->
+<!--                                    th:href="@{/user/{id}/edit(id=${usr.id})}"-->
+<!--                                    class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">-->
+<!--                                <i class="fa fa-fw fa-edit"></i>-->
+<!--                            </a>-->
                             <form
                                     th:action="@{/user/{id}/delete(id=${usr.id})}" th
                                     :method="delete" class="d-inline">

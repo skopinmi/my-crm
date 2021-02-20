@@ -3,6 +3,7 @@ package ru.geekbrains.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -37,6 +38,9 @@ public class User {
     @JoinColumn(name = "status_id")
     private Status status;
 
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
     public User() {
     }
 
@@ -44,5 +48,17 @@ public class User {
         this.name = name;
         this.phone = phone;
         this.email = email;
+    }
+
+    public User(Long id, String name, String phone, String email, String description,
+                Set<Role> roles, Status status, List<Order> orders) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.description = description;
+        this.roles = roles;
+        this.status = status;
+        this.orders = orders;
     }
 }

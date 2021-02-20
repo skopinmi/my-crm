@@ -36,14 +36,12 @@ public class NotifierController {
 
     @RequestMapping("/notify/status/{id}")
     public String notify(Model model, @PathVariable Long id) {
-        model.addAttribute("activePage", "None");
         emailNotifier.send(userServiceImpl.findByStatusId(id), "New Sale");
         return "redirect:/";
     }
 
     @RequestMapping("/notify")
     public String notifyAll(Model model) {
-        model.addAttribute("activePage", "None");
         emailNotifier.sendAll();
         return "redirect:/";
     }

@@ -2,6 +2,7 @@ package ru.geekbrains.models;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -21,12 +22,12 @@ public class Service {
 
 
     @Column(name = "price")
-    private Double price;
+    private BigDecimal price;
 
     public Service() {
     }
 
-    public Service(String name, String description, Double price) {
+    public Service(String name, String description, BigDecimal price) {
         this.name = name;
         this.description = description;
         this.price = price;

@@ -19,7 +19,6 @@ public class StatusController {
 
     @RequestMapping("/statuses")
     public String statusPage(Model model) {
-        model.addAttribute("activePage", "None");
         model.addAttribute("statuses", statusRepository.findAll());
         return "statuses";
     }

@@ -23,16 +23,14 @@ public class PrintController {
     }
 
     @RequestMapping("/print")
-    public String printPageFile(Model model) {
-        model.addAttribute("activePage", "None");
+    public String printPageFile() {
         printServiceFactory.getPrintService(PrintServiceFactory.PrintType.TO_FILE)
                 .print(messageCreator.getMessage());
         return "redirect:/";
     }
 
     @RequestMapping("/printPR")
-    public String printPagePrinter(Model model) {
-        model.addAttribute("activePage", "None");
+    public String printPagePrinter() {
         printServiceFactory.getPrintService(PrintServiceFactory.PrintType.TO_PAPER)
                 .print(messageCreator.getMessage());
         return "redirect:/";
