@@ -1,6 +1,6 @@
 package ru.geekbrains.services.dbservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.models.Status;
 import ru.geekbrains.repositories.StatusRepository;
@@ -8,14 +8,10 @@ import ru.geekbrains.repositories.StatusRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StatusServiceImpl implements StatusService{
 
-    StatusRepository statusRepository;
-
-    @Autowired
-    public StatusServiceImpl(StatusRepository statusRepository) {
-        this.statusRepository = statusRepository;
-    }
+    private final StatusRepository statusRepository;
 
     public Status findById (Long id) {
         return statusRepository.findById(id).get();

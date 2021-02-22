@@ -1,31 +1,26 @@
 package ru.geekbrains.contrillers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.repositories.StatusRepository;
 import ru.geekbrains.services.dbservice.StatusServiceImpl;
 
 
 @Controller
+@RequiredArgsConstructor
 public class StatusController {
 
-    StatusServiceImpl statusServiceImpl;
+    private final StatusServiceImpl statusServiceImpl;
 
-    @Autowired
-    public StatusController (StatusServiceImpl statusServiceImpl) {
-        this.statusServiceImpl = statusServiceImpl;
-    }
-
-    @RequestMapping("/statuses")
+    @GetMapping("/statuses")
     public String statusPage(Model model) {
         model.addAttribute("statuses", statusServiceImpl.findAll());
         return "statuses";
     }
 
-//    @RequestMapping("/status/{id}/delete")
+//    @GetMapping("/status/{id}/delete")
 //    public String removeStatus( @PathVariable Long id) {
 //        statusServiceImpl.remove(id);
 //        return "redirect:/statuses";

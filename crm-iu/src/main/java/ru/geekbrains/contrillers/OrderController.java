@@ -1,5 +1,6 @@
 package ru.geekbrains.contrillers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,17 +11,11 @@ import ru.geekbrains.services.dbservice.OrderEntryServiceImpl;
 import ru.geekbrains.services.dbservice.OrderServiceImpl;
 
 @Controller
+@RequiredArgsConstructor
 public class OrderController {
 
-    OrderServiceImpl orderServiceImpl;
-    OrderEntryServiceImpl orderEntryServiceImpl;
-
-    @Autowired
-    public OrderController(OrderServiceImpl orderServiceImpl,
-                           OrderEntryServiceImpl orderEntryServiceImpl) {
-        this.orderServiceImpl = orderServiceImpl;
-        this.orderEntryServiceImpl = orderEntryServiceImpl;
-    }
+    private final OrderServiceImpl orderServiceImpl;
+    private final OrderEntryServiceImpl orderEntryServiceImpl;
 
     @GetMapping("/orders")
     public String ordersPage(Model model) {
@@ -33,7 +28,7 @@ public class OrderController {
         model.addAttribute("orderEntry", orderServiceImpl.findById(id).getOrderEntries());
         return "order";
     }
-    @RequestMapping ("/order/{id}/delete")
+    @GetMapping("/order/{id}/delete")
     public String orderRemove(Model model, @PathVariable Long id) {
         orderServiceImpl.remove(id);
         return "redirect:/orders";

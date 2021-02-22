@@ -1,20 +1,20 @@
 package ru.geekbrains.services.notifiers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.services.dbservice.UserServiceImpl;
 import ru.geekbrains.services.dbservice.repr.UserRepr;
+
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class SMSNotifierImpl implements Notifier {
 
-    UserServiceImpl userService;
-
-    @Autowired
-    public SMSNotifierImpl(UserServiceImpl userService) {
-        this.userService = userService;
-    }
+    private final UserServiceImpl userService;
+    private static final Logger logger = LoggerFactory.getLogger(SMSNotifierImpl.class);
 
     @Override
     public boolean login() {
@@ -29,7 +29,7 @@ public class SMSNotifierImpl implements Notifier {
     @Override
     public boolean notify(List<UserRepr> userReprList, String message) {
         for (UserRepr userRepr: userReprList) {
-            System.out.println(userRepr.getName() + " notified " + message);
+            logger.info(userRepr.getName() + " notified " + message);
         }
         return true;
     }
@@ -50,6 +50,6 @@ public class SMSNotifierImpl implements Notifier {
 
     @Override
     public void report(boolean bn, TypeOfReport type) {
-        System.out.println(type.name() + this.getClass().getSimpleName() + " is " + bn);
+        logger.info(type.name() + this.getClass().getSimpleName() + " is " + bn);
     }
 }

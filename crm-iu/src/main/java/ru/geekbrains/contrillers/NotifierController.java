@@ -1,46 +1,34 @@
 package ru.geekbrains.contrillers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.geekbrains.services.dbservice.UserServiceImpl;
 import ru.geekbrains.services.notifiers.EmailNotifierImpl;
 import ru.geekbrains.services.notifiers.SMSNotifierImpl;
-import ru.geekbrains.services.dbservice.StatusServiceImpl;
-import ru.geekbrains.services.dbservice.UserServiceImpl;
 
 @Controller
+@RequiredArgsConstructor
 public class NotifierController {
 
     private final UserServiceImpl userServiceImpl;
-    private EmailNotifierImpl emailNotifier;
-    private SMSNotifierImpl SMSNotifier;
+    private final EmailNotifierImpl emailNotifier;
+    private final SMSNotifierImpl smsNotifier;
 
-    private StatusServiceImpl statusServiceImpl;
-
-    @Autowired
-    public NotifierController(
-            EmailNotifierImpl emailNotifier,
-            SMSNotifierImpl SMSNotifier,
-            StatusServiceImpl statusServiceImpl,
-            UserServiceImpl userServiceImple) {
-        this.emailNotifier = emailNotifier;
-        this.SMSNotifier = SMSNotifier;
-        this.statusServiceImpl = statusServiceImpl;
-        this.userServiceImpl = userServiceImple;
-    }
-
-    @RequestMapping("/notify/status/{id}")
+    @GetMapping("/notify/status/{id}")
     public String notify(Model model, @PathVariable Long id) {
         emailNotifier.send(userServiceImpl.findByStatusId(id), "New Sale");
+        smsNotifier.send(userServiceImpl.findByStatusId(id), "New Sale");
         return "redirect:/";
     }
 
-    @RequestMapping("/notify")
+    @GetMapping("/notify")
     public String notifyAll(Model model) {
         emailNotifier.sendAll();
+        smsNotifier.sendAll();
         return "redirect:/";
     }
-
 }

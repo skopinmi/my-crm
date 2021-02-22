@@ -1,5 +1,6 @@
 package ru.geekbrains.contrillers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,16 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.geekbrains.services.dbservice.UserService;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @Autowired
-    public UserController( UserService userService) {
-        this.userService = userService;
-    }
-
-    @RequestMapping("/")
+    @GetMapping("/")
     public String indexPage(Model model) {
         model.addAttribute("activePage", "None");
         return "index";

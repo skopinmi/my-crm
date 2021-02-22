@@ -1,6 +1,6 @@
 package ru.geekbrains.services.dbservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.geekbrains.repositories.StatusRepository;
@@ -12,17 +12,11 @@ import ru.geekbrains.services.dbservice.repr.UserRepr;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private StatusRepository statusRepository;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository,
-                           StatusRepository statusRepository) {
-        this.userRepository = userRepository;
-        this.statusRepository = statusRepository;
-    }
+    private final StatusRepository statusRepository;
 
     public List<UserRepr> findByStatusId (Long id) {
         return statusRepository.findById(id).get().getUsers()

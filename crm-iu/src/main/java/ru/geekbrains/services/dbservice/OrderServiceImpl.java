@@ -1,6 +1,6 @@
 package ru.geekbrains.services.dbservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.models.Order;
 import ru.geekbrains.repositories.OrderRepository;
@@ -9,14 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderServiceImpl {
 
     private final OrderRepository orderRepository;
-
-    @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
 
     public List<Order> findAll () {
         return new ArrayList<>(orderRepository.findAll());

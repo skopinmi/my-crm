@@ -1,5 +1,7 @@
 package ru.geekbrains.services.printservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.geekbrains.services.dbservice.repr.Message;
 
 
@@ -11,9 +13,7 @@ public class PrintServiceToFile implements PrintService {
 
     private FileWriter fileWriter;
 
-    public PrintServiceToFile(){
-
-    }
+    private static final Logger logger = LoggerFactory.getLogger(PrintServiceToFile.class);
 
     @Override
     public void print(Message message) {
@@ -22,6 +22,6 @@ public class PrintServiceToFile implements PrintService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("print to file " + message.getText() + " to " + message.getTargetFile().getName());
+        logger.info("print to file " + message.getText() + " to " + message.getTargetFile().getName());
     }
 }
