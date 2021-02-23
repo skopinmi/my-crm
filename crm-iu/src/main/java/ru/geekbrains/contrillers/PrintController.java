@@ -3,7 +3,6 @@ package ru.geekbrains.contrillers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import ru.geekbrains.services.printservice.PrintServiceFactory;
 import ru.geekbrains.services.fileservice.MessageCreator;
 

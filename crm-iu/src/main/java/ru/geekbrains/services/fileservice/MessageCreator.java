@@ -15,7 +15,7 @@ public class MessageCreator {
     private String path;
 
     public Message getMessage() {
-        String name = UUID.randomUUID() + "";
+        String name = UUID.randomUUID().toString();
         Message message = new Message();
         message.setAuthor("My");
         message.setTargetFile(new File(path + name + ".txt"));

@@ -1,8 +1,7 @@
 package ru.geekbrains.services.notifiers;
 
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.services.dbservice.UserService;
 import ru.geekbrains.services.dbservice.repr.UserRepr;
@@ -10,10 +9,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class EmailNotifierImpl implements Notifier{
 
     private final UserService userService;
-    private static final Logger logger = LoggerFactory.getLogger(SMSNotifierImpl.class);
 
     @Override
     public boolean login() {
@@ -28,7 +27,7 @@ public class EmailNotifierImpl implements Notifier{
     @Override
     public boolean notify(List<UserRepr> userReprList, String message) {
         for (UserRepr userRepr: userReprList) {
-            logger.info(userRepr.getName() + " notified " + message);
+            log.info(userRepr.getName() + " notified " + message);
         }
         return true;
     }
@@ -49,6 +48,6 @@ public class EmailNotifierImpl implements Notifier{
 
     @Override
     public void report(boolean bn, TypeOfReport type) {
-        logger.info(type.name() + this.getClass().getSimpleName() + " is " + bn);
+        log.info(type.name() + this.getClass().getSimpleName() + " is " + bn);
     }
 }
