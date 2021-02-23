@@ -3,8 +3,8 @@ package ru.geekbrains.services.notifiers;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.models.User;
 import ru.geekbrains.services.dbservice.UserServiceImpl;
-import ru.geekbrains.services.dbservice.repr.UserRepr;
 
 import java.util.List;
 
@@ -26,17 +26,17 @@ public class SMSNotifierImpl implements Notifier {
     }
 
     @Override
-    public boolean notify(List<UserRepr> userReprList, String message) {
-        for (UserRepr userRepr: userReprList) {
-            log.info(userRepr.getName() + " notified " + message);
+    public boolean notify(List<User> userList, String message) {
+        for (User user: userList) {
+            log.info(user.getName() + " notified " + message);
         }
         return true;
     }
 
     @Override
-    public void send(List<UserRepr> userReprList, String message) {
+    public void send(List<User> userList, String message) {
         report(login(), TypeOfReport.LOGIN);
-        report(notify(userReprList, message), TypeOfReport.NOTIFY);
+        report(notify(userList, message), TypeOfReport.NOTIFY);
         report(logout(), TypeOfReport.LOGOUT);
     }
 

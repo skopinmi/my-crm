@@ -1,15 +1,15 @@
 package ru.geekbrains.services.dbservice;
 
-import ru.geekbrains.services.dbservice.repr.UserRepr;
+import ru.geekbrains.models.User;
 import java.util.List;
 
 public interface UserService {
 
-    void save(UserRepr userRepr);
+//    void save(User user);
 
-    List<UserRepr> findAll();
+    List<User> findAll();
 
-    UserRepr findById(Long id);
+    User findById(Long id);
 
     void remove(Long id);
 }

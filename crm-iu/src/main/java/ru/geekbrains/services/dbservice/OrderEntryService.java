@@ -1,17 +1,16 @@
 package ru.geekbrains.services.dbservice;
 
-import ru.geekbrains.services.dbservice.repr.OrderEntryRepr;
-import ru.geekbrains.services.dbservice.repr.UserRepr;
+import ru.geekbrains.models.OrderEntry;
 
 import java.util.List;
 
 public interface OrderEntryService {
 
-    void save(OrderEntryRepr orderEntryRepr);
+    void save(OrderEntry orderEntry);
 
-    List<OrderEntryRepr> findAll();
+    List<OrderEntry> findAll();
 
-    OrderEntryRepr findById(Long id);
+    OrderEntry findById(Long id);
 
     void remove(Long id);
 }

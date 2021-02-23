@@ -2,11 +2,10 @@ package ru.geekbrains.services.dbservice;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.models.OrderEntry;
 import ru.geekbrains.repositories.OrderEntryRepository;
-import ru.geekbrains.services.dbservice.repr.OrderEntryRepr;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -14,15 +13,13 @@ public class OrderEntryServiceImpl implements OrderEntryService {
 
     private final OrderEntryRepository orderEntryRepository;
 
-    public List<OrderEntryRepr> findAll () {
-        return orderEntryRepository.findAll().stream()
-                .map(OrderEntryRepr :: new)
-                .collect(Collectors.toList());
+    public List<OrderEntry> findAll () {
+        return orderEntryRepository.findAll();
     }
 
-    public OrderEntryRepr findById (Long id) {
+    public OrderEntry findById (Long id) {
 
-        return new OrderEntryRepr(orderEntryRepository.findById(id).get());
+        return orderEntryRepository.findById(id).get();
     }
 
     @Override
@@ -31,6 +28,6 @@ public class OrderEntryServiceImpl implements OrderEntryService {
     }
 
     @Override
-    public void save(OrderEntryRepr orderEntryRepr) {
+    public void save(OrderEntry orderEntry) {
     }
 }
