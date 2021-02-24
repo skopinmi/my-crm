@@ -2,6 +2,7 @@ package ru.geekbrains.services.notifiers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.models.User;
 import ru.geekbrains.services.dbservice.UserService;
@@ -11,6 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Log4j2
+@Primary
 public class EmailNotifierImpl implements Notifier{
 
     private final UserService userService;

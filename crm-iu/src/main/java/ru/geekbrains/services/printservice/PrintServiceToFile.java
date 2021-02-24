@@ -10,9 +10,6 @@ import java.io.IOException;
 @Log4j2
 public class PrintServiceToFile implements PrintService {
 
-
-    private FileWriter fileWriter;
-
     @Override
     public void print(Message message) {
         try (FileWriter fileWriter = new FileWriter(message.getTargetFile())) {

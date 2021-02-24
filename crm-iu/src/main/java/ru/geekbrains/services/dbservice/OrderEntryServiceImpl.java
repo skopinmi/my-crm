@@ -13,13 +13,14 @@ public class OrderEntryServiceImpl implements OrderEntryService {
 
     private final OrderEntryRepository orderEntryRepository;
 
+    @Override
     public List<OrderEntry> findAll () {
         return orderEntryRepository.findAll();
     }
 
+    @Override
     public OrderEntry findById (Long id) {
-
-        return orderEntryRepository.findById(id).get();
+        return orderEntryRepository.findById(id).orElse(new OrderEntry());
     }
 
     @Override

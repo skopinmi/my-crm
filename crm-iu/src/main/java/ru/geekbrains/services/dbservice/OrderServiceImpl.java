@@ -19,7 +19,7 @@ public class OrderServiceImpl {
     }
 
     public Order findById (Long id) {
-        return orderRepository.findById(id).get();
+        return orderRepository.findById(id).orElse(new Order());
     }
 
     public void remove (Long id) {

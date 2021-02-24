@@ -1,11 +1,13 @@
 package ru.geekbrains.models;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
+@RequiredArgsConstructor
 @Entity
 @Table(name = "order_entery")
 public class OrderEntry {
@@ -31,18 +33,7 @@ public class OrderEntry {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public OrderEntry() {
-    }
 
-    public OrderEntry(Long id, int quantity, BigDecimal basePrice,
-                      BigDecimal totalPrice, Service service, Order order) {
-        this.id = id;
-        this.quantity = quantity;
-        this.basePrice = basePrice;
-        this.totalPrice = totalPrice;
-        this.service = service;
-        this.order = order;
-    }
 
     public OrderEntry(Service service, Integer quantity) {
         this.service = service;

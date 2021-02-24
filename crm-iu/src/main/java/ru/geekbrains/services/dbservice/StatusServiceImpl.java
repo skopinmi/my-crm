@@ -13,10 +13,12 @@ public class StatusServiceImpl implements StatusService{
 
     private final StatusRepository statusRepository;
 
+    @Override
     public Status findById (Long id) {
-        return statusRepository.findById(id).get();
+        return statusRepository.findById(id).orElse(new Status());
     }
 
+    @Override
     public void remove (Long id) {
         statusRepository.deleteById(id);
     }
