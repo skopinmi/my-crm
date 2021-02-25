@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.geekbrains.models.Status;
 import ru.geekbrains.models.User;
+import ru.geekbrains.DAO.JdbcTemplateUserDAO;
 import ru.geekbrains.repositories.StatusRepository;
 import ru.geekbrains.repositories.UserRepository;
 
@@ -16,7 +17,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
+    private final JdbcTemplateUserDAO jdbcTemplateUserDAO;
     private final StatusRepository statusRepository;
 
 
@@ -26,21 +28,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        return userRepository.findAll();
+        return jdbcTemplateUserDAO.findAll();
+//        return userRepository.findAll();
     }
 
     @Override
     public void save(User user) {
-        userRepository.save(user);
+//        userRepository.save(user);
     }
 
     @Override
     public User findById(Long id) {
-        return userRepository.findById(id).orElse(new User());
+
+        return jdbcTemplateUserDAO.findById(id);
+//        return userRepository.findById(id).orElse(new User());
     }
 
     @Override
     public void remove (Long id) {
-        userRepository.deleteById(id);
+
+        jdbcTemplateUserDAO.deleteById(id);
+//        userRepository.deleteById(id);
     }
 }
