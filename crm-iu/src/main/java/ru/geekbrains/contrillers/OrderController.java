@@ -23,7 +23,7 @@ public class OrderController {
     @GetMapping("/order/{id}")
     public String ordersPage(Model model, @PathVariable Long id) {
         model.addAttribute("order", orderServiceImpl.findById(id));
-        model.addAttribute("orderEntry", orderServiceImpl.findById(id).getOrderEntries());
+        model.addAttribute("orderEntry", orderEntryServiceImpl.findAllByOrderId(id));
         return "order";
     }
     @GetMapping("/order/{id}/delete")

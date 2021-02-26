@@ -1,6 +1,9 @@
-package ru.geekbrains.repositories.mappers;
+package ru.geekbrains.DAO.mappers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+import ru.geekbrains.DAO.JdbcTemplateUserDAO;
 import ru.geekbrains.models.Status;
 import ru.geekbrains.models.User;
 
@@ -8,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@Component
+//@RequiredArgsConstructor
 public class StatusMapper implements RowMapper {
 
     @Override

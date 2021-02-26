@@ -15,7 +15,7 @@ public class PrintServiceToFile implements PrintService {
         try (FileWriter fileWriter = new FileWriter(message.getTargetFile())) {
             fileWriter.write(message.getText());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info(e.getStackTrace());
         }
         log.info("print to file " + message.getText() + " to " + message.getTargetFile().getName());
     }
