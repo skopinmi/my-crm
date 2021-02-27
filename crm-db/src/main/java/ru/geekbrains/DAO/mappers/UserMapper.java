@@ -1,17 +1,15 @@
 package ru.geekbrains.DAO.mappers;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import ru.geekbrains.models.Status;
 import ru.geekbrains.models.User;
-import ru.geekbrains.DAO.JdbcTemplateStatusDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
-public class UserMapper implements RowMapper {
+public class UserMapper implements RowMapper<User> {
 
 
     @Override

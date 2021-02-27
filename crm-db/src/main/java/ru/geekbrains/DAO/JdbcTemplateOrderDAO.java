@@ -14,17 +14,16 @@ import java.util.List;
 public class JdbcTemplateOrderDAO {
 
     private final JdbcTemplate jdbcTemplate;
+    private final OrderMapper orderMapper;
 
     public Order findById(Long id) {
-        String SQL = "SELECT * FROM ORDERS WHERE id = ?";
-        Order order = (Order) jdbcTemplate.queryForObject(SQL, new Object[] {id}, new OrderMapper());
-        return order;
+        String SQL = String.format("SELECT * FROM ORDERS o JOIN USERS u ON o.user_id = u.id WHERE o.id = %s", id);
+        return jdbcTemplate.queryForObject(SQL, orderMapper);
     }
 
     public List findAll() {
         String SQL = "SELECT * FROM ORDERS o JOIN USERS u ON o.user_id = u.id";
-        List orders = jdbcTemplate.query(SQL, new OrderMapper());
-        return orders;
+        return jdbcTemplate.query(SQL, orderMapper);
     }
 
     public void deleteById (Long id) {

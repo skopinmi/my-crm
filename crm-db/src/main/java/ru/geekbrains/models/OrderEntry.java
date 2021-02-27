@@ -7,9 +7,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
-@RequiredArgsConstructor
 @Entity
-@Table(name = "order_entery")
+@Table(name = "order_entry")
 public class OrderEntry {
 
     @Id
@@ -33,7 +32,8 @@ public class OrderEntry {
     @JoinColumn(name = "order_id")
     private Order order;
 
-
+    public OrderEntry() {
+    }
 
     public OrderEntry(Service service, Integer quantity) {
         this.service = service;

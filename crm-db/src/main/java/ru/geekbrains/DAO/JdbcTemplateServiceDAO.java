@@ -13,17 +13,17 @@ import java.util.List;
 public class JdbcTemplateServiceDAO {
 
     private final  JdbcTemplate jdbcTemplate;
+    private final ServiceMapper serviceMapper;
 
     public Service findById(Long id) {
-        String SQL = "SELECT * FROM SERVICES WHERE id = ?";
-        Service service = (Service) jdbcTemplate.queryForObject(SQL, new ServiceMapper());
-        return service;
+
+        String SQL = String.format("SELECT * FROM SERVICES WHERE id = %s", id);
+        return jdbcTemplate.queryForObject(SQL, serviceMapper);
     }
 
     public List findAll() {
         String SQL = "SELECT * FROM SERVICES";
-        List services = jdbcTemplate.query(SQL, new ServiceMapper());
-        return services;
+        return jdbcTemplate.query(SQL, serviceMapper);
     }
 
     public void deleteById (Long id) {

@@ -1,25 +1,14 @@
 package ru.geekbrains.DAO.mappers;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 import ru.geekbrains.models.*;
-
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OrderEntryMapper implements RowMapper {
 
-    private Long id;
-
-    private int quantity;
-
-    private BigDecimal basePrice;
-
-    private BigDecimal totalPrice;
-
-    private Service service;
-
-    private Order order;
+@Component
+public class OrderEntryMapper implements RowMapper <OrderEntry> {
 
     @Override
     public OrderEntry mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -35,13 +24,14 @@ public class OrderEntryMapper implements RowMapper {
         user.setDescription(rs.getString("u.description"));
         Order order = new Order();
         order.setId(rs.getLong("o.id"));
-        order.setTotalPrice(rs.getBigDecimal("o.totalPrice"));
+        order.setTotalPrice(rs.getBigDecimal("o.total_price"));
+        order.setId(rs.getLong("o.id"));
         order.setUser(user);
         Service service = new Service();
-        service.setId(rs.getLong("oe.id"));
-        service.setPrice(rs.getBigDecimal("oe.totalprice"));
-        service.setDescription(rs.getString("oe.description"));
-        service.setName(rs.getString("oe.name"));
+        service.setId(rs.getLong("s.id"));
+        service.setPrice(rs.getBigDecimal("s.price"));
+        service.setDescription(rs.getString("s.description"));
+        service.setName(rs.getString("s.name"));
         orderEntry.setService(service);
         return orderEntry;
     }
