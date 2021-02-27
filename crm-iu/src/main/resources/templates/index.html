@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<nav th:replace="fragments/header :: header"></nav>
+
+<div class="d-flex">
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4">Добро пожаловать в раализацию CRM из моей UML диаграммы! </h2>
+
+        <div class="card mb-4">
+            <div class="card-body">На настоящий момент работает: Основное меню и пункты в меню "Пользователи" и "Статус"
+                В меню "Пользователи" выводит всех пользователей из базы.
+                Кнопка "печать в файл" создает файл в папке crm-iu/src/main/resources/files,
+                кнопка "печать на принтер" просто выводит сообщение в консоль. Сообщение стандартное.
+                В меню "Статусы" выводит все статусы. Работают кнопка "сообщить всем" и кнопка "сообщить всем с соответствующим статусом".
+                Сообщение о распродажах (сообщения стандартные). Работает удаление.
+                В меню "Заказы" выводит все заказы. Кнопки печать работают также как и на странице "позьзователи".
+                При клике на Id заказа переходит на страницу конкретного заказа. Работает удаление.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:replace="fragments/footer :: scripts"></script>
+<script src="https://bootadmin.net/js/datatables.min.js"></script>
+
+</body>
+</html>

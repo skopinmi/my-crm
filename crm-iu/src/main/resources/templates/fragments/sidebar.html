@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body class="bg-light">
+
+    <div th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
+        <ul class="list-unstyled">
+            <li>
+                <a href="#sm_expand_1" data-toggle="collapse">
+                    <i class="fa fa-fw fa-link"></i>Первый пункт
+                </a>
+                <ul id="sm_expand_1" class="list-unstyled collapse">
+                    <li th:classappend="${activePage == 'Users'} ? active"><a th:href="@{'/users'}">Пользователи</a></li>
+<!--                    <li th:classappend="${activePage == 'Roles'} ? active"><a th:href="@{'/roles'}">Роль</a></li>-->
+                    <li th:classappend="${activePage == 'Statuses'} ? active"><a th:href="@{'/statuses'}">Статусы</a></li>
+                    <li th:classappend="${activePage == 'Orders'} ? active"><a th:href="@{'/orders'}">Заказы</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
